@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="DonneCours">
+        <s:complexType />
+      </s:element>
+      <s:element name="DonneCoursResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DonneCoursResult" type="tns:ArrayOfC_Cours" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfC_Cours">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="C_Cours" nillable="true" type="tns:C_Cours" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="C_Cours">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idCours" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="heuredebut" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="heurefin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="jour" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="professeur" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="salle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="matiere" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DONNEPRESENCEAVECIDCOURS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="P_Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DONNEPRESENCEAVECIDCOURSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DONNEPRESENCEAVECIDCOURSResult" type="tns:ArrayOfGet_Presence_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGet_Presence_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Get_Presence_Result" nillable="true" type="tns:Get_Presence_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Get_Presence_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prenom" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCours" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DonneUtilisateurs">
+        <s:complexType />
+      </s:element>
+      <s:element name="DonneUtilisateursResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DonneUtilisateursResult" type="tns:ArrayOfC_Utilisateurs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfC_Utilisateurs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="C_Utilisateurs" nillable="true" type="tns:C_Utilisateurs" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="C_Utilisateurs">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idUtilisateurs" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prenom" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Add_User">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Nom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Prenom" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Add_UserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Add_UserResult" type="tns:ArrayOfC_Utilisateurs" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPresence">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_User" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Cours_Choisi" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPresenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddPresenceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SupprimePresence">
+        <s:complexType />
+      </s:element>
+      <s:element name="SupprimePresenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SupprimePresenceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DonneCoursSoapIn">
+    <wsdl:part name="parameters" element="tns:DonneCours" />
+  </wsdl:message>
+  <wsdl:message name="DonneCoursSoapOut">
+    <wsdl:part name="parameters" element="tns:DonneCoursResponse" />
+  </wsdl:message>
+  <wsdl:message name="DONNEPRESENCEAVECIDCOURSSoapIn">
+    <wsdl:part name="parameters" element="tns:DONNEPRESENCEAVECIDCOURS" />
+  </wsdl:message>
+  <wsdl:message name="DONNEPRESENCEAVECIDCOURSSoapOut">
+    <wsdl:part name="parameters" element="tns:DONNEPRESENCEAVECIDCOURSResponse" />
+  </wsdl:message>
+  <wsdl:message name="DonneUtilisateursSoapIn">
+    <wsdl:part name="parameters" element="tns:DonneUtilisateurs" />
+  </wsdl:message>
+  <wsdl:message name="DonneUtilisateursSoapOut">
+    <wsdl:part name="parameters" element="tns:DonneUtilisateursResponse" />
+  </wsdl:message>
+  <wsdl:message name="Add_UserSoapIn">
+    <wsdl:part name="parameters" element="tns:Add_User" />
+  </wsdl:message>
+  <wsdl:message name="Add_UserSoapOut">
+    <wsdl:part name="parameters" element="tns:Add_UserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddPresenceSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPresence" />
+  </wsdl:message>
+  <wsdl:message name="AddPresenceSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPresenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SupprimePresenceSoapIn">
+    <wsdl:part name="parameters" element="tns:SupprimePresence" />
+  </wsdl:message>
+  <wsdl:message name="SupprimePresenceSoapOut">
+    <wsdl:part name="parameters" element="tns:SupprimePresenceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="DonneCours">
+      <wsdl:input message="tns:DonneCoursSoapIn" />
+      <wsdl:output message="tns:DonneCoursSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DONNEPRESENCEAVECIDCOURS">
+      <wsdl:input message="tns:DONNEPRESENCEAVECIDCOURSSoapIn" />
+      <wsdl:output message="tns:DONNEPRESENCEAVECIDCOURSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DonneUtilisateurs">
+      <wsdl:input message="tns:DonneUtilisateursSoapIn" />
+      <wsdl:output message="tns:DonneUtilisateursSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Add_User">
+      <wsdl:input message="tns:Add_UserSoapIn" />
+      <wsdl:output message="tns:Add_UserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPresence">
+      <wsdl:input message="tns:AddPresenceSoapIn" />
+      <wsdl:output message="tns:AddPresenceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SupprimePresence">
+      <wsdl:input message="tns:SupprimePresenceSoapIn" />
+      <wsdl:output message="tns:SupprimePresenceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DonneCours">
+      <soap:operation soapAction="http://tempuri.org/DonneCours" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DONNEPRESENCEAVECIDCOURS">
+      <soap:operation soapAction="http://tempuri.org/DONNEPRESENCEAVECIDCOURS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DonneUtilisateurs">
+      <soap:operation soapAction="http://tempuri.org/DonneUtilisateurs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_User">
+      <soap:operation soapAction="http://tempuri.org/Add_User" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPresence">
+      <soap:operation soapAction="http://tempuri.org/AddPresence" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupprimePresence">
+      <soap:operation soapAction="http://tempuri.org/SupprimePresence" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DonneCours">
+      <soap12:operation soapAction="http://tempuri.org/DonneCours" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DONNEPRESENCEAVECIDCOURS">
+      <soap12:operation soapAction="http://tempuri.org/DONNEPRESENCEAVECIDCOURS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DonneUtilisateurs">
+      <soap12:operation soapAction="http://tempuri.org/DonneUtilisateurs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add_User">
+      <soap12:operation soapAction="http://tempuri.org/Add_User" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPresence">
+      <soap12:operation soapAction="http://tempuri.org/AddPresence" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupprimePresence">
+      <soap12:operation soapAction="http://tempuri.org/SupprimePresence" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="http://localhost:63056/WebService1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="http://localhost:63056/WebService1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
